@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[]{subfigure}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{textcomp,gensymb}
+\usepackage{nameref}
+\usepackage{accents}
+\usepackage{listings}
+\usepackage{color,soul}
+\usepackage[margin=1in]{geometry}
+\usepackage{steinmetz}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\hypersetup{
+    breaklinks = true,
+}
+\urlstyle{same}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\renewcommand\thesection{\arabic{section}$^a$}
+\renewcommand\thesubsection{(\alph{subsection})}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+    frame=tb,
+    language=Matlab,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4
+}
+
+\title{Trabalho}
+\author{Arthur Matos}
+\date{2019}
+
+\begin{document}
+% capa
+\begin{titlepage}
+    \begin{center}
+        \centering
+        \includegraphics[width=.7\linewidth]{images/logo_unb.png}\\[0.5cm]
+        {\large \textbf{Universidade de Brasília}}\\[0.2cm]
+        {\large \textbf{Departamento de Engenharia Elétrica}}\\[0.2cm]
+        {\large \textbf{Controle Digital}}\\[4.8cm]
+        {\bf \huge {Exercício de Simulação 2}}\\[0.2cm]
+        {\bf \large {}}
+    \end{center}
+
+    \vspace{5cm}
+    \hspace{2cm} {\noindent \bf \large {Aluno:}}\\
+    \vspace{0.8cm}
+    \hspace{2.35cm} {\large Arthur de Matos Beggs --------------------------------- 12/0111098}\\[1cm]
+
+    \begin{center}
+        {\large Brasília}\\
+        {\large 2$^{\ubar{\circ}}$/2019}
+    \end{center}
+
+\end{titlepage}
+\clearpage
+\setcounter{page}{2}
+% \tableofcontents
+\clearpage
+
+% % Template de figura
+% \begin{figure}[H]
+%     \centering
+%         \includegraphics[width=1\linewidth]{images/}
+%         \caption{}\label{fig:}
+% \end{figure}
+
+% % Corpo do Relatório
+
+\section{Discretize a função de transferência $$ G(s) = \frac{Y(s)}{U(s)} = \frac{1}{(s+2)(s+3)} $$ usando os métodos a seguir.}
+\subsection*{Para cada caso, calcule a solução para $u(t) = 0$ $\forall\, t \geq 0$, $y(0) = 100$, $\dot{y}(0) = 0$, $T = 0.1s$ e compare no Matlab a solução exata a tempo contínuo com os resultados obtidos.}
+
+\subsection{Transformada de $ G(s) $ com segurador de ordem zero em série:}
+
+
+\subsection{Regra retangular para frente:}
+
+
+\subsection{Regra retangular para trás:}
+
+
+\subsection{Regra trapeizodal:}
+
+
+\subsection{Mapeamento exato de pólos e zeros:}
+
+
+\vspace{5cm}
+\section{Considere uma planta com entrada $u(t)$ e saída $y(t)$, cuja função de transferência é dada por $$ G(s) = \frac{Y(s)}{U(s)} = \frac{k_p}{Js^2} $$}
+\subsection*{Deseja-se utilizar um controlador com a estrutura $$ U(s) = \frac{bk_C}{a}U_c(s) - k_C\frac{s+b}{s+a}Y(s), $$ onde $U_C(s)$ é o sinal de referência. O polinômio característico de malha fechada deve ser $$ P(s) = (s+\omega_0)(s^2 + \omega_0s + \omega_0^2) = s^3 + 2\omega_0s^2 + 2\omega_0^2s + \omega_0^3. $$}
+\subsection*{Para isso, basta escolher os parâmetros do controlador como $a = 2\omega_0$, $b = \omega_0/2$ e $k_C = 2\frac{J\omega_0^2}{k_P}$. Nesse caso, é possível verificar que o tempo de acomodação de 5\% do sistema a malha fechada para a entrada degrau é $t_s(5\%) = 5.52/\omega_0$. Quando necessário, utilize $\omega_0 = 1$.}
+
+\subsection{Mostre que a função de transferência de malha fechada é dada por $$ \frac{Y(s)}{U_C(s)} = \frac{ (\frac{\omega_0^2}{2})\left( s + 2\omega_0\right) }{ s^3 + 2\omega_0s^2 + 2\omega_0^2s + \omega_0^3 }: $$}
+
+
+\subsection{Obtenha o diagrama de Bode do sistema a malha fechada e determine a frequência de corte $\omega_c$:}
+
+
+\subsection{Verifique que a ação de controle pode ser escrita como $$ U(s) = k_C \left( \frac b a U_C(s) - Y(s) + X(s) \right); $$ $$ X(s) = \frac{a-b}{s+a} Y(s). $$ Passando essas equações para o domínio do tempo e fazendo $\frac{dx(t)}{dt} \approx \frac{x(t+T)-x(t)}{T}$, onde $T$ é o período de amostragem, mostre que o controlador pode ser discretizado da seguinte forma $$ u[k] = k_C \left( \frac b a u_c[k] - y[k] + x[k] \right); $$ $$ x[k+1] = x[k] + T\left[ (a-b)y[k] - ax[k]\right] : $$}
+
+
+\subsection{Implemente no Simulink esse sistema com controlador a tempo contínuo e com controlador discretizado com períodos de amostragem $T = 0.2/\omega_0$, $T = 0.5/\omega_0$ e $T = 1.08/\omega_0$:}
+
+
+\subsection{Para cada período de amostragem, calcule a relação entre a frequência de amostragem e a frequência de corte do sistema a malha fechada $\omega_s/\omega_c$:}
+
+
+\subsection{Para cada período de amostragem, compare a saída do sistema a malha fechada com controlador contínuo com a saída do sistema a malha fechada com controlador discretizado. O que se pode afirmar sobre o tempo de assentamento para os sistemas com controlador discretizado?}
+
+
+\subsection{Para cada período de amostragem, compare a ação de controle do sistema a malha fechada com controlador contínuo com a saída do sistema a malha fechada com controlador discretizado:}
+
+
+\subsection{O que pode ser concluído acerca da seleção da frquência de amostragem para a discretização de controladores a tempo contínuo?}
+
+
+
+\end{document}
+
