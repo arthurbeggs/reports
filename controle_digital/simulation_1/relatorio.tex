@@ -47,7 +47,7 @@
 
 \title{Trabalho}
 \author{Arthur Matos}
-\date{2019}
+\date{2021}
 
 \begin{document}
 % capa
@@ -69,7 +69,7 @@
 
     \begin{center}
         {\large Brasília}\\
-        {\large 2$^{\ubar{\circ}}$/2019}
+        {\large 2$^{\ubar{\circ}}$/2020}
     \end{center}
 
 \end{titlepage}
@@ -89,8 +89,8 @@
 
 {\Large \bf {
     Considere um sistema de controle a tempo discreto com realimentação
-    unitária e período de amostragem $ T = 1s $ cuja função de transferência é
-    dada por
+    unitária e período de amostragem $ T = 1s $ cuja função de transferência de
+    malha aberta é dada por
 
     \[ G(z) = \frac{K(0.379z + 0.2642)}{(z-0.3679)(z-1)} \]
 }}
@@ -126,7 +126,7 @@
                 \end{cases}
             \]
         \item $ P(1)  > 0 \implies P(1)  = 0.6231K > 0 \implies K > 0 $
-        \item $ P(-1) > 0 \implies P(-1) = 1 - (0.3679K - 1.3679) + 0.3679 + 0.2642 > 0 \implies K < 2.3925 $
+        \item $ P(-1) > 0 \implies P(-1) = 1 - (0.3679K - 1.3679) + 0.3679 + 0.2642K > 0 \implies K < 26.3818 $
     \end{enumerate}
 
     \begin{figure}[H]
@@ -142,7 +142,7 @@
     {O critério de Routh-Hurwitz modificado mapeia o domínio $s$ no domínio $z$
     utilizando a transformação}
 
-    \[ z = \frac{s + 1}{s = 1} \]
+    \[ z = \frac{s + 1}{s - 1} \]
 
     {Aplicando a transformação em $P(z)$, temos}
 

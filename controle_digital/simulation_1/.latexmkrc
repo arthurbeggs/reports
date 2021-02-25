@@ -1,9 +1,8 @@
 $out_dir = 'build';
 @default_files = ('relatorio.tex');
-$pdflatex = 'pdflatex -synctex=1 -interaction=nonstopmode -output-directory=build %S && cp build/relatorio.pdf ./relatorio.pdf';
+$pdflatex = 'pdflatex -synctex=1 -file-line-error -shell-escape -interaction=nonstopmode -output-directory=build %O %S; cp build/relatorio.pdf ./Sim01-120111098.pdf';
 $pdf_mode = 1;
 $force_mode = 1;
+$bibtex_use = 1;
 
-$pdf_update_method = 2;
-$pdf_previewer = 'mupdf';
 
