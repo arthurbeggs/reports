@@ -1,0 +1,92 @@
+\documentclass{article}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[]{subfigure}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage{textcomp,gensymb}
+\usepackage{nameref}
+\usepackage{accents}
+\usepackage{listings}
+\usepackage{color,soul}
+\usepackage[margin=1in]{geometry}
+\usepackage{steinmetz}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\hypersetup{
+    breaklinks = true,
+}
+\urlstyle{same}
+\newcommand{\ubar}[1]{\underaccent{\bar}{#1}}
+\renewcommand\thesection{\arabic{section}$^a$}
+\renewcommand\thesubsection{\arabic{section}.\alph{subsection}}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+    frame=tb,
+    language=Matlab,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=4
+}
+
+\title{Trabalho}
+\author{Arthur Matos}
+\date{2021}
+
+\begin{document}
+% capa
+\begin{titlepage}
+    \begin{center}
+        \centering
+        \includegraphics[width=.7\linewidth]{images/logo_unb.png}\\[0.5cm]
+        {\large \textbf{Universidade de Brasília}}\\[0.2cm]
+        {\large \textbf{Departamento de Engenharia Elétrica}}\\[0.2cm]
+        {\large \textbf{Controle Digital}}\\[4.8cm]
+        {\bf \huge {Exercício de Simulação 6}}\\[0.2cm]
+        {\bf \large {}}
+    \end{center}
+
+    \vspace{5cm}
+    \hspace{2cm} {\noindent \bf \large {Aluno:}}\\
+    \vspace{0.8cm}
+    \hspace{2.35cm} {\large Arthur de Matos Beggs --------------------------------- 12/0111098}\\[1cm]
+
+    \begin{center}
+        {\large Brasília}\\
+        {\large 2$^{\ubar{\circ}}$/2020}
+    \end{center}
+
+\end{titlepage}
+\clearpage
+\setcounter{page}{2}
+% \tableofcontents
+\clearpage
+
+% % Template de figura
+% \begin{figure}[H]
+%     \centering
+%         \includegraphics[width=1\linewidth]{images/}
+%         \caption{}\label{fig:}
+% \end{figure}
+
+% % Corpo do Relatório
+
+
+\end{document}
+
