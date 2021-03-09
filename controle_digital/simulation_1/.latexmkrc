@@ -5,4 +5,3 @@ $pdf_mode = 1;
 $force_mode = 1;
 $bibtex_use = 1;
 
-
