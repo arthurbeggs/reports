@@ -30,9 +30,13 @@ Gs_z = Gc_z * Gp_z
 
 % Root locus e polos dominantes
 hold on
-rlocus(Gs_z)
+rlocus(Gs_z,(0:0.01:100))
 plot(real(z_dom),imag(z_dom),'r*',real(z_dom),-imag(z_dom),'r*')
 
 % Encontrando Kc
 [Z_sys, P_sys, K_sys] = zpkdata(Gs_z, 'v');
-Kc = ( abs(z_dom - P_sys(1)) * abs(z_dom - P_sys(2)) ) / ( K_sys * abs(z + )
+Kc = ( abs(z_dom - P_sys(1)) * abs(z_dom - P_sys(2)) ) / ( K_sys * abs(z_dom - Z_sys(2)) )
+
+
+% Parte 2
+step(Kc*Gs_z)

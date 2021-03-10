@@ -306,7 +306,7 @@
         {O par de polos complexos conjugados dominantes desejado pode ser
             encontrado por}
 
-        \[ z_{dom} = |z|(\cos(\angle z) \pm j\sin(\angle z) = 0.5158 \pm j0.6387 \]\\
+        \[ z_{dom} = |z|\left(\cos(\angle z) \pm j\sin(\angle z)\right) = 0.5158 \pm j0.4281 \]\\
 
         {O LGR do sistema não controlado apresentado na Figura~\ref{fig:q2_lgr_descontrolado}
             foi obtido no Matlab usando os comandos\\
@@ -332,29 +332,30 @@
         {Como o a planta discretizada possui dois polos e um zero finito, o
             controlador fará o cancelamento do polo $z \neq 1$.}
 
-        \[ \angle G_p(z) = \arctan\left( \frac{0.6387}{ 0.5158 + 0.8753 } \right)
-                - \left(180^\circ - \arctan\left( \frac{0.6387}{ 1 - 0.5158 } \right) \right) \qquad\qquad\]
-        \[\qquad\qquad\qquad\qquad - \left(180^\circ - \arctan\left( \frac{0.6387}{ 0.6703 - 0.5158 } \right) \right)
-                + \left(180^\circ - \arctan\left( \frac{0.6387}{ 0.6703 - 0.5158 } \right) \right) \]\\
-        \[ \angle G_p(z) = 102.5048^\circ \neq 180^\circ \pm 360^\circ i \]\\
+        \[ \angle G_p(z) = \arctan\left( \frac{0.4281}{ 0.5158 + 0.8753 } \right)
+                - \left(180^\circ - \arctan\left( \frac{0.4281}{ 1 - 0.5158 } \right) \right) \qquad\qquad\]
+        \[\qquad\qquad\qquad\qquad - \left(180^\circ - \arctan\left( \frac{0.4281}{ 0.6703 - 0.5158 } \right) \right)
+                + \left(180^\circ - \arctan\left( \frac{0.4281}{ 0.6703 - 0.5158 } \right) \right) \]\\
+        \[ \angle G_p(z) = 121.4106^\circ \neq 180^\circ \pm 360^\circ i \]\\
 
         {Assim, o polo do controlador precisa contribuir com
-        $180^\circ - 102.5048^\circ = 77.4951^\circ$.}
+        $180^\circ - 121.4106^\circ = 58.5893^\circ$.}
 
-        \[ tan(77.4951^\circ) = \frac{0.6387}{ 0.5158 - p_c}
-            \implies p_c = -\frac{0.6387}{tan(77.4951^\circ)} + 0.5158 = 0.3741 \]
+        \[ tan(58.5893^\circ) = \frac{0.4281}{ 0.5158 - p_c}
+            \implies p_c = -\frac{0.4281}{tan(58.5893^\circ)} + 0.5158 = 0.2543 \]
 
         {O controlador projetado é dado por}
-        \[ G_c(z) = K_c\frac{z - 0.6703}{z - 0.3741} \quad , \]
+        \[ G_c(z) = K_c\frac{z - 0.6703}{z - 0.2543} \quad , \]
         {onde $K_c$ é o ganho do controlador.}
 
         {A função de transferência de malha aberta do sistema controlado é dada por}
-        \[ G_s(z) = G_c(z) \times G_p(z) = \frac{0.01758K_c(z+0.8753)}{(z-1)(z-0.3741)} \]
+        \[ G_s(z) = G_c(z) \times G_p(z) = \frac{0.01758K_c(z+0.8753)}{(z-1)(z-0.2543)} \]
 
         {O LGR do sistema $G_s(z)$ apresentado na Figura~\ref{fig:q2_lgr_controlled}
             foi obtido no Matlab usando os comandos\\
-        >> $ hold \; on $\\
+        >> $ Gc\_z = zpk([0.6703], [0.2543], [1], T); $\\
         >> $ Gs\_z = Gc\_z * Gp\_z $\\
+        >> $ hold \; on $\\
         >> $ rlocus(Gs\_z) $\\
         >> $ plot(real(z\_dom),imag(z\_dom),'r*',real(z\_dom),-imag(z\_dom),'r*') $ }\\
 
@@ -369,19 +370,50 @@
 
         {Para encontrar o ganho $K_c$ do controlador, a condição de módulo é
             utilizada. Assim,}
-        \[ \left|G_s(z)|\right_{z= 0.5158 + j0.6387} = \frac{0.01758K_c \left|z + 0.8753|\right}{\left|z - 1|\right \left|z - 0.3741|\right} = 1 \]
-        \[ \implies K_c = \left.\frac{\left|z - 1|\right \left|z - 0.3741|\right}{0.01758 \left|z + 0.8753|\right} \right|_{z= 0.5158 + j0.6387} = 19.4862 \]
+        \[ \left|G_s(z)|\right_{z= 0.5158 + j0.4281} = \frac{0.01758K_c \left|z + 0.8753|\right}{\left|z - 1|\right \left|z - 0.2543|\right} = 1 \]
+        \[ \implies K_c = \left.\frac{\left|z - 1|\right \left|z - 0.2543|\right}{0.01758 \left|z + 0.8753|\right} \right|_{z= 0.5158 + j0.4281} = 12.6722 \]\\
 
-        \[ G_c(z) = \frac{19.4862(z - 0.6703)}{(z - 0.3741)} \]
-
+        \[ G_c(z) = \frac{12.6722(z - 0.6703)}{(z - 0.2543)} \]\\
 
 
     \section{Obtenha computacionalmente a resposta ao degrau unitário do sistema
         em malha fechada. Verifique se os requisitos de projeto foram satisfeitos:}
 
+        {A resposta do sistema em malha fechada a uma entrada degrau unitário
+            é apresentada na Figura~\ref{fig:q2_step_response}
+            foi obtida no Matlab usando o comando\\
+        >> $ step(feedback(Gs_z, 1)) $\\
 
+        \begin{figure}[H]
+           \centering
+                \includegraphics[width=1\linewidth]{images/q2_step_response.png}
+                \caption{Resposta do sistema em malha fechada a uma entrada degrau unitário.}
+                \label{fig:q2_step_response}
+        \end{figure}
 
+        {Os parâmetros da resposta foram obtidos pelo comando}\\
+        >> $ stepinfo(feedback(Gs_z, 1)) $\\
+        \begin{tabular}{ r l }
+            RiseTime: & 0.400000000000000\\
+            SettlingTime: & 2.200000000000000\\
+            SettlingMin: & 0.973504789254130\\
+            SettlingMax: & 1.154551426500324\\
+            Overshoot: & 15.455142650032405\\
+            Undershoot: & 0\\
+            Peak: & 1.154551426500324\\
+            PeakTime: & 1\\
+        \end{tabular}\\
 
+        {Verificando os parâmetros de resposta, o tempo de acomodação $t_s$ foi
+            de $2.2\,s$, apenas um período de amostragem além do desejado.}
+        {Para verificar se o requisito do coeficiente de amortecimento
+            $\zeta = 0.5$ foi atendido, o \textit{overshoot} será utilizado.}
+
+        \[ \zeta = \frac{-\log\left( \frac{\text{overshoot}}{100} \right)}{ \sqrt{ \pi^2 + \log^2\left( \frac{\text{overshoot}}{100} \right) } }
+            = \frac{-\log\left( \frac{15.4551}{100} \right)}{ \sqrt{ \pi^2 + \log^2\left( \frac{15.4551}{100} \right) } }
+            = 0.5109 \]\\
+
+        {O resultado do projeto se aproxima satisfatoriamente dos requisitos.}
 
 
     \section{Obtenha computacionalmente a resposta à rampa unitária do sistema
